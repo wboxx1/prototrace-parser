@@ -1,0 +1,31 @@
+syntax = "proto3";
+package prototrace;
+
+message Trace{
+  repeated sint32 data = 1;
+  string scan_name = 2;
+  double start_frequency = 3;
+  double stop_frequency = 4;
+  double resolution_bandwidth = 5;
+  double video_bandwidth = 6;
+  sint32 reference_level = 7;
+  int32 sweep_points = 8;
+  int32 auto_sweep_time = 9;
+  int32 sweep_time = 10;
+  int32 single_sweep_mode = 11;
+  int32 number_of_sweeps = 12;
+  int32 dwell_time = 13;
+  int32 coupling = 14;
+  int32 pre_amp_state = 15;
+  int32 attenuation = 16;
+  int32 auto_attenuation = 17;
+  int32 antenna_offset = 18;
+  int32 detector_type = 19;
+  int32 trace_type =20;
+  double latitude = 21;
+  double longitude = 22;
+  int32 azimuth = 23;
+  int32 elevation = 24;
+  string measurement_date_time = 25; 
+  string significant_digits = 26;
+}
