@@ -1,0 +1,7 @@
+name: protobuf
+channels:
+  - defaults
+dependencies:
+  - protobuf
+prefix: C:\Users\wboxx\miniconda3\envs\protobuf
+
