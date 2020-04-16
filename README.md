@@ -13,10 +13,10 @@ The following Binder link will take you to a notebook which shows what a replay 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wboxx1/prototrace-parser.git/master?filepath=replay_data.ipynb)
 
 
+What follows is descriptions of the trace attributes.
+
 ## trace.data
 The data attribute holds the array of amplitude data points.  The size of this array is determined by the "sweep points" attribute.  This represents the raw data from the analyzer and so the units are normall in dBm.  The data is then later "replayed" and corrected using the appropriate losses and antenna factors.  I saved you this step and corrected the data into units of dBuV/m.  The data is saved as integers in order to save space by taking advantage of the protocol buffer varint type.  In order to convert the doubles into integers, the values were divided by 10^(**trace.significant_digits**).
-
-What follows is descriptions of the trace attributes.
 
 ## trace.significant_digits
 This is an integer that represents the number of significant digits used when saving the data.  This value is needed to convert the data back to doubles.  To convert the data back from integers, multipy each value by 10^(**trace.significant_digits**).
