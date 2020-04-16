@@ -13,7 +13,7 @@ The following Binder link will take you to a notebook which shows what a replay 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wboxx1/prototrace-parser.git/master?filepath=replay_data.ipynb)
 
 
-What follows is descriptions of the trace attributes.
+# What follows is descriptions of the trace attributes.
 
 ## trace.data
 The data attribute holds the array of amplitude data points.  The size of this array is determined by the "sweep points" attribute.  This represents the raw data from the analyzer and so the units are normall in dBm.  The data is then later "replayed" and corrected using the appropriate losses and antenna factors.  I saved you this step and corrected the data into units of dBuV/m.  The data is saved as integers in order to save space by taking advantage of the protocol buffer varint type.  In order to convert the doubles into integers, the values were divided by 10^(**trace.significant_digits**).
@@ -84,10 +84,10 @@ This represents the latitude of the measurement point.  I have set this to 0.  U
 ## trace.longitude
 This represents the longitude of the measurement point.  I have set this to 0.  Units are normally decimal degrees.
 
-## azimuth
+## trace.azimuth
 This represents the azimuth of the positioner during this trace collection.  This is only useful if a positioner was used.  Units are degrees.
 
-## elevation
+## trace.elevation
 This represents the elevation above sea level during the measurement.  Units are meters.
 
 ## trace.measurement_data_time
