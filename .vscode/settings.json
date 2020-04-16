@@ -1,6 +1,0 @@
-{
-    "python.pythonPath": "/home/wboxx1/miniconda3/envs/py37/bin/python",
-    "python.linting.pylintEnabled": true,
-    "python.linting.pycodestyleEnabled": false,
-    "python.linting.enabled": true
-}
