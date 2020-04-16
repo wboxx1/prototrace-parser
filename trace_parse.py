@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 # You can read about protocol buffers [here](https://developers.google.com/protocol-buffers).
 # The [.proto](trace.proto) file defines our object attributes and is used by the protocol buffer compiler to create the [pb2.py](trace_pb2.py) file.
 # The pb2.py file contains the class of functions we can use to store and parse the object we defined in the .proto file.
-#
+
 # %% [markdown]
 # # Sample Data
 # For the purpose of this demo, I will use a small sample of the data I sent you.
