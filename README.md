@@ -2,7 +2,7 @@
 
 This repo is set up to give instructions on how to parse the .ptc files in the data I sent you.  Each .ptc file represents a saved trace object created from spectrum analyzer data at a given time.  The trace object has 26 attributes.  Each attribute is defined below.
 
-The following Binder link will take you to an interactive Jupyter Notebook which will guide you through an example of parsing the data.  The Binder may take some time to load.
+The following Binder link will take you to an interactive Jupyter Notebook which will guide you through an example of parsing the data.  The Binder may take some time to load.  If you don't want to or can't use the binder link, the notebook files are stored in this repo.  You can open them for reading on github or download them and run on your own Jupyter server for interactivity.
 
 ### Binder link for trace parser
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wboxx1/prototrace-parser.git/master?filepath=trace_parse.ipynb)
