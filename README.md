@@ -7,7 +7,7 @@ The following Binder link will take you to an interactive Jupyter Notebook which
 ### Binder link for trace parser
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wboxx1/prototrace-parser.git/master?filepath=trace_parse.ipynb)
 
-The following Binder link will take you to a notebook which shows what a replay of the data set may look like as we use it.
+The following Binder link will take you to a notebook which runs a replay of the dataset.  This shows the changes in the spectrum over time as we collected it.
 
 ### Binder link to replay notebook
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wboxx1/prototrace-parser.git/master?filepath=replay_data.ipynb)
