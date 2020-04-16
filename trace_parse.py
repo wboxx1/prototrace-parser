@@ -1,13 +1,55 @@
 # %%
 import trace_pb2
+import glob
 import pandas as pd
 import numpy as np
 from scipy import interpolate
 import matplotlib.pyplot as plt
 
+# %% [markdown]
+# # Introduction
+# ## A bit of intruduction first.
+# We use Google's protocol buffers for serializing our data.
+# You can read about protocol buffers [here](https://developers.google.com/protocol-buffers).
+# The [.proto](trace.proto) file defines our object attributes and is used by the protocol buffer compiler to create the [pb2.py](trace_pb2.py) file.
+# The pb2.py file contains the class of functions we can use to store and parse the object we defined in the .proto file.
+#
+# %% [markdown]
+# # Sample Data
+# For the purpose of this demo, I will use a small sample of the data I sent you.
+# The local samples are store in the [sample-data](sample-data/) folder.
+# You will notice the data files are saved with a .ptc file extension.  This is a file extension we use to denote prototrace (protocol buffer trace) files.
+
 # %%
+# Set directories
+input_directory = "sample-data/"
+
+# Store file paths into list
+input_files = glob.glob("{}{}".format(input_directory, "*.ptc"))
+
+# %% [markdown]
+# In order to parse the data, you need to create local trace object using the pb2.py file.
+# I will only parse one file for this demo.
+
+# %%
+# Create trace object
+trace = trace_pb2.Trace()
+
+# Parse .ptc file
+try:
+    f = open(input_files[0], "rb")
+    trace.ParseFromString(f.read())
+    f.close()
+except IOError:
+    print(sys.arg[1] + ": Could not open file.")
+
+# %% [markdown]
+# Each .trc file has a list of attributes available.
+
+# %%
+# List of attributes
 attributes = [
-    # data,
+    "data",
     "scan_name",
     "start_frequency",
     "stop_frequency",
@@ -35,99 +77,36 @@ attributes = [
     "significant_digits",
 ]
 
-# %%
-trace = trace_pb2.Trace()
-try:
-    f = open("trace.ptc", "rb")
-    trace.ParseFromString(f.read())
-    f.close()
-except IOError:
-    print(sys.arg[1] + ": Could not open file.")
-
-# %%
+# Attributs for the .trc file I parsed
 for att in attributes:
-    print("{}: {}".format(att, getattr(trace, att)))
+    if att == "data":
+        print("{}: [data array]".format(att, getattr(trace, att)))
+    else:
+        print("{}: {}".format(att, getattr(trace, att)))
+
+# %% [markdown]
+# The amplitude data is saved as integers in order to save space by taking advantage
+# of the protocol buffer varint type. In order to convert back to doubles,
+# the values are multiplied by 10^(trace.significant_digits)
 
 # %%
 data_y = np.array(trace.data) / (10 ** int(trace.significant_digits))
 
 # %%
-print(data_y[0:3])
+print("Data before conversion: {}".format(np.array(trace.data)[0:3]))
+print("Data after conversion: {}".format(data_y[0:3]))
 
+# %% [markdown]
+# The frequency data is not stored as an array.
+# The frequency array must be created using the start_frequency,
+# stop_frequency, and sweep_points attributes
 # %%
-data_x = np.linspace(trace.start_frequency, trace.stop_frequency, len(data_y))
-
-# %%
-print(data_x[0])
-print(data_x[-1])
-print(data_x.shape)
-# %%
-antenna = pd.read_csv("Qpar218.ant", header=1)
-rows_to_skip = [*range(18), 10019]
-losses = pd.read_csv(
-    "2G_to_9G.csv",
-    skiprows=lambda x: x in rows_to_skip,
-    names=["Hz", "Loss"],
-    dtype="float64",
-)
-print(antenna.head())
-print(losses.head())
-print(losses.tail())
-
-# %%
-# Extract antenna data into arrays
-ant_x = np.array(antenna["! MHz"])
-ant_y_db = np.array(antenna["Gain(dB)"])
-ant_y_af = np.array(antenna["AF"])
-
-# %%
-# Extract losses into arrays
-loss_x = np.array(losses["Hz"])
-loss_y = np.array(losses["Loss"])
-
-# %%
-# Convert Hz to MHz
-loss_x = np.divide(loss_x, 1e6)
-
-# %%
-# create interpolators for the antenna and loss arrays to fit the data
-interpolator_db = interpolate.interp1d(ant_x, ant_y_db)
-interpolator_af = interpolate.interp1d(ant_x, ant_y_af)
-interpolator_loss = interpolate.interp1d(loss_x, loss_y)
-
-# %%
-# apply the interpolators to the data
-interpd_ant_data_db = interpolator_db(data_x)
-interpd_ant_data_af = interpolator_af(data_x)
-interpd_losses = interpolator_loss(data_x)
-
-# %%
+data_x = np.linspace(trace.start_frequency, trace.stop_frequency, trace.sweep_points)
 # Sanity check
-print("Data shape: {}".format(data_y.shape))
-# print("Ant data shape: {}".format(interpd_ant_data_db.shape))
-print("Ant data shape: {}".format(interpd_ant_data_af.shape))
-print("Cal data shape: {}".format(interpd_losses.shape))
-
-
-# %%
-# define a data scaling function
-def scale_data(data, antenna_factors, losses):
-    # dBm to dB/m
-    scaled_data = np.fromiter((x + y for x, y in zip(data, antenna_factors)), "float64")
-
-    # dBm/m to dBuV/m
-    scaled_data = np.add(scaled_data, 107)
-
-    # Add in losses
-    scaled_data = np.fromiter((x - y for x, y in zip(scaled_data, losses)), "float64")
-
-    return scaled_data
-
-
-# %%
-# Scale the data
-scaled_data = scale_data(data_y, interpd_ant_data_af, interpd_losses)
-
+print("Start Frequency: {}".format(data_x[0]))
+print("Stop Frequency: {}".format(data_x[-1]))
+print("Amplitude data shape: {}".format(data_y.shape))
+print("Frequency data shape: {}".format(data_x.shape))
 
 # %%
 def plot_trace(
@@ -146,7 +125,9 @@ def plot_trace(
 
 
 # %%
-plot_trace(data_x, data_y, title="uncorrected", ylabel="Amplitude (dBm)")
-plot_trace(data_x, scaled_data, title="corrected")
+plot_trace(
+    data_x, data_y, title="Trace Plot measured {}".format(trace.measurement_date_time)
+)
+
 
 # %%
