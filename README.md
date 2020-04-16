@@ -1,6 +1,17 @@
 # Parser for protocol buffer 85EIS trace files.
 
-This repo is set up to give instructions on how to parse the .ptc files in the data I sent you.  Each .ptc file represents a saved trace object created from spectrum analyzer data at a given time.  The trace object has ? attributes:
+This repo is set up to give instructions on how to parse the .ptc files in the data I sent you.  Each .ptc file represents a saved trace object created from spectrum analyzer data at a given time.  The trace object has 26 attributes.  Each attribute is defined below.
+
+The following Binder link will take you to an interactive Jupyter Notebook which will guide you through an example of parsing the data.  The Binder may take some time to load.
+
+### Binder link for trace parser
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wboxx1/prototrace-parser.git/master?filepath=trace_parse.ipynb)
+
+The following Binder link will take you to a notebook which shows what a replay of the data set may look like as we use it.
+
+### Binder link to replay notebook
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wboxx1/prototrace-parser.git/master?filepath=replay_data.ipynb)
+
 
 ## trace.data
 The data attribute holds the array of amplitude data points.  The size of this array is determined by the "sweep points" attribute.  This represents the raw data from the analyzer and so the units are normall in dBm.  The data is then later "replayed" and corrected using the appropriate losses and antenna factors.  I saved you this step and corrected the data into units of dBuV/m.  The data is saved as integers in order to save space by taking advantage of the protocol buffer varint type.  In order to convert the doubles into integers, the values were divided by 10^(**trace.significant_digits**).
@@ -82,8 +93,4 @@ This is the long data string representation of the date and time when the measur
     
 
 
-# Binder link for entire repo
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wboxx1/prototrace-parser.git/master)
 
-# Binder link to replay notebook
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wboxx1/prototrace-parser.git/master?filepath=replay_data.ipynb)
