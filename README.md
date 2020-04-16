@@ -1,9 +1,9 @@
-## prototrace-parser
-Parser for protocol buffer 85EIS trace files.
+# prototrace-parser
+## Parser for protocol buffer 85EIS trace files.
 
 This repo is set up to give instructions on how to parse the .ptc files in the data I sent you.  Each .ptc file represents a saved trace object created from spectrum analyzer data at a given time.  The trace object has ? attributes:
 
-# trace.data
+### trace.data
 The data attribute holds the array of amplitude data points.  The size of this array is determined by the "sweep points" attribute.  This represents the raw data from the analyzer and so the units are normall in dBm.  The data is then later "replayed" and corrected using the appropriate losses and antenna factors.  I saved you this step and corrected the data into units of dBuV/m.  The data is saved as integers in order to save space by taking advantage of the protocol buffer varint type.  In order to convert the doubles into integers, the values were divided by 10^(**trace.significant_digits**).
 
 # trace.significant_digits
