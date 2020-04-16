@@ -108,6 +108,9 @@ print("Stop Frequency: {}".format(data_x[-1]))
 print("Amplitude data shape: {}".format(data_y.shape))
 print("Frequency data shape: {}".format(data_x.shape))
 
+# %% [markdown]
+# A plot of the data represents the measured spectral data at that point in time.
+
 # %%
 def plot_trace(
     trace_x,
