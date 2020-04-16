@@ -100,6 +100,7 @@ print("Data after conversion: {}".format(data_y[0:3]))
 # The frequency data is not stored as an array.
 # The frequency array must be created using the start_frequency,
 # stop_frequency, and sweep_points attributes
+
 # %%
 data_x = np.linspace(trace.start_frequency, trace.stop_frequency, trace.sweep_points)
 # Sanity check
