@@ -5,6 +5,8 @@ import pandas as pd
 import numpy as np
 from scipy import interpolate
 import matplotlib.pyplot as plt
+%matplotlib inline
+%matplotlib notebook
 
 # %% [markdown]
 # # Introduction
