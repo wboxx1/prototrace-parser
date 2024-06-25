@@ -89,7 +89,7 @@ for att in attributes:
 # %% [markdown]
 # The amplitude data is saved as integers in order to save space by taking advantage
 # of the protocol buffer varint type. In order to convert back to doubles,
-# the values are multiplied by 10^(trace.significant_digits)
+# the values are divided by 10^(trace.significant_digits)
 
 # %%
 data_y = np.array(trace.data) / (10 ** int(trace.significant_digits))

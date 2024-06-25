@@ -5,12 +5,12 @@ This repo is set up to give instructions on how to parse the .ptc files in the d
 The following Binder link will take you to an interactive Jupyter Notebook which will guide you through an example of parsing the data.  The Binder may take some time to load.  If you don't want to or can't use the binder link, the notebook files are stored in this repo.  You can open them for reading on github or download them and run on your own Jupyter server for interactivity.
 
 ### Binder link for trace parser
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wboxx1/prototrace-parser.git/master?filepath=trace_parse.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wboxx1/prototrace-parser.git/HEAD?labpath=trace_parse.ipynb)
 
 The following Binder link will take you to a notebook which runs a replay of the dataset.  This shows the changes in the spectrum over time as we collected it.
 
 ### Binder link to replay notebook
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wboxx1/prototrace-parser.git/master?filepath=replay_data.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wboxx1/prototrace-parser.git/HEAD?labpath=replay_data.ipynb)
 
 # Trace Attributes
 What follows is descriptions of the trace attributes.
