@@ -5,7 +5,7 @@ This repo is set up to give instructions on how to parse the .ptc files in the d
 The following Binder link will open this repository in an interactive Jupyter Lab.  There are two notebook files that can be viewed: trace_parser.ipynb and replay_data.ipynb.  The trace_parser.ipynb notebook will guide you through an example of parsing the data.  The Binder link may take some time to load.  If you don't want to or can't use the binder link, the notebook files are stored in this repo.  You can open them for reading on github or download them and run on your own Jupyter server for interactivity.
 
 ### Binder link for trace parser
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wboxx1/prototrace-parser.git/HEAD?urlpath=lab/)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wboxx1/prototrace-parser/HEAD)
 
 # Trace Attributes
 What follows is descriptions of the trace attributes.
