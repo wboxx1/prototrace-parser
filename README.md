@@ -1,6 +1,6 @@
 # Parser for protocol buffer 85EIS trace files.
 
-This repo is set up to give instructions on how to parse the .ptc files in the data I sent you.  Each .ptc file represents a saved trace object created from spectrum analyzer data at a given time.  The trace object has 26 attributes.  Each attribute is defined below.
+This repo is set up to give instructions on how to parse 85EIS .ptc files.  Each .ptc file represents a saved trace object created from spectrum analyzer data at a given time.  The trace object has 26 attributes.  Each attribute is defined below.
 
 The following Binder link will open this repository in an interactive Jupyter Lab.  There are two notebook files that can be viewed: trace_parser.ipynb and replay_data.ipynb.  The trace_parser.ipynb notebook will guide you through an example of parsing the data.  The Binder link may take some time to load.  If you don't want to or can't use the binder link, the notebook files are stored in this repo.  You can open them for reading on github or download them and run on your own Jupyter server for interactivity.
 
