@@ -5,5 +5,4 @@ dependencies:
   - protobuf
   - matplotlib
   - numpy
-prefix: /home/wboxx1/miniconda3/envs/py37
 

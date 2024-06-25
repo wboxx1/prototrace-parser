@@ -2,15 +2,10 @@
 
 This repo is set up to give instructions on how to parse the .ptc files in the data I sent you.  Each .ptc file represents a saved trace object created from spectrum analyzer data at a given time.  The trace object has 26 attributes.  Each attribute is defined below.
 
-The following Binder link will take you to an interactive Jupyter Notebook which will guide you through an example of parsing the data.  The Binder may take some time to load.  If you don't want to or can't use the binder link, the notebook files are stored in this repo.  You can open them for reading on github or download them and run on your own Jupyter server for interactivity.
+The following Binder link will open this repository in an interactive Jupyter Lab.  There are two notebook files that can be viewed: trace_parser.ipynb and replay_data.ipynb.  The trace_parser.ipynb notebook will guide you through an example of parsing the data.  The Binder link may take some time to load.  If you don't want to or can't use the binder link, the notebook files are stored in this repo.  You can open them for reading on github or download them and run on your own Jupyter server for interactivity.
 
 ### Binder link for trace parser
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wboxx1/prototrace-parser.git/HEAD?labpath=trace_parse.ipynb)
-
-The following Binder link will take you to a notebook which runs a replay of the dataset.  This shows the changes in the spectrum over time as we collected it.
-
-### Binder link to replay notebook
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wboxx1/prototrace-parser.git/HEAD?labpath=replay_data.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wboxx1/prototrace-parser.git/HEAD?urlpath=lab/)
 
 # Trace Attributes
 What follows is descriptions of the trace attributes.
