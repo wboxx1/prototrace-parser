@@ -1,12 +1,11 @@
 # %%
-import sys
 import glob
-import trace_pb2
-import pandas as pd
-import numpy as np
-from scipy import interpolate
-import matplotlib.pyplot as plt
+
 import matplotlib.animation as animation
+import matplotlib.pyplot as plt
+import numpy as np
+
+import trace_pb2
 
 # Set directories
 # input_directory = sys.argv[1]
@@ -20,7 +19,6 @@ trace = trace_pb2.Trace()
 
 
 def animate(ax):
-
     data_y = np.array(trace.data) / (10 ** int(trace.significant_digits))
     data_x = np.linspace(trace.start_frequency, trace.stop_frequency, len(data_y))
 
